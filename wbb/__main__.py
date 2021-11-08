@@ -105,16 +105,16 @@ home_keyboard_pm = InlineKeyboardMarkup(
     [
         [
             InlineKeyboardButton(
-                text="Cᴏᴍᴍᴀɴᴅꜱ 📓", callback_data="bot_commands"
+                text="ᴄᴏᴍᴍᴀɴᴅꜱ 📓", callback_data="bot_commands"
             ),
             InlineKeyboardButton(
-                text="Cʜɪᴛ Cʜᴀᴛ",
+                text="ᴄʜɪᴛ ᴄʜᴀᴛ",
                 url="http://t.me/AnimeSync",
             ),
         ],
         [
             InlineKeyboardButton(
-                text="Sᴜᴘᴘᴏʀᴛ", url="http://t.me/TangentChats"
+                text="ꜱᴜᴘᴘᴏʀᴛ", url="http://t.me/TangentChats"
             ),
         
         
@@ -123,7 +123,7 @@ home_keyboard_pm = InlineKeyboardMarkup(
                 url=f"http://t.me/{BOT_USERNAME}?startgroup=new",
             )
           ],
-          [ InlineKeyboardButton( text="Nᴇᴛᴡᴏrk🌐", url=f"https://t.me/ShinobiNet")
+          [ InlineKeyboardButton( text="Network 🌐", url=f"https://t.me/ShinobiNet")
         ],
     ]
 )
