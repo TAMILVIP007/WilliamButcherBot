@@ -114,18 +114,16 @@ home_keyboard_pm = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-                text="System Stats 🖥",
-                callback_data="stats_callback",
-            ),
-            InlineKeyboardButton(
                 text="Sᴜᴘᴘᴏʀᴛ", url="http://t.me/TangentChats"
             ),
-        ],
-        [
+        
+        
             InlineKeyboardButton(
-                text="Add Me To Your Group 🎉",
+                text="Add ➕",
                 url=f"http://t.me/{BOT_USERNAME}?startgroup=new",
             )
+          ],
+          [ InlineKeyboardButton( text="Nᴇᴛᴡᴏrk🌐", url=f"https://t.me/ShinobiNet")
         ],
     ]
 )
