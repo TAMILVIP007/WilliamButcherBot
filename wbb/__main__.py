@@ -119,7 +119,7 @@ home_keyboard_pm = InlineKeyboardMarkup(
         
         
             InlineKeyboardButton(
-                text="Add ➕",
+                text="➕ Summon Me",
                 url=f"http://t.me/{BOT_USERNAME}?startgroup=new",
             )
           ],
