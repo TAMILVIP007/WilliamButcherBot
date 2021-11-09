@@ -105,16 +105,16 @@ home_keyboard_pm = InlineKeyboardMarkup(
     [
         [
             InlineKeyboardButton(
-                text="ᴄᴏᴍᴍᴀɴᴅꜱ 📓", callback_data="bot_commands"
+                text="Commands 📓", callback_data="bot_commands"
             ),
             InlineKeyboardButton(
-                text="ᴄʜɪᴛ ᴄʜᴀᴛ",
+                text="Chit Chat",
                 url="http://t.me/AnimeSync",
             ),
         ],
         [
             InlineKeyboardButton(
-                text="ꜱᴜᴘᴘᴏʀᴛ", url="http://t.me/TangentChats"
+                text="Support", url="http://t.me/TangentChats"
             ),
         
         
@@ -131,7 +131,7 @@ home_keyboard_pm = InlineKeyboardMarkup(
 home_text_pm = (
     f"Hey there! My name is {BOT_NAME}. I can manage your "
     + "group with lots of useful features, feel free to "
-    + "add me to your group."
+    + "add me to your group " + text="Onichan", url=f"https://telegra.ph/file/7ba6536e75495cdc6ceb1.jpg")
 )
 
 
@@ -291,7 +291,7 @@ async def help_button(client, query):
     create_match = re.match(r"help_create", query.data)
     top_text = f"""
 Hello {query.from_user.first_name}, My name is {BOT_NAME}.
-I'm a group management bot with some usefule features.
+I'm a group management bot with some useful features.
 You can choose an option below, by clicking a button.
 Also you can ask anything in Support Group.
 
