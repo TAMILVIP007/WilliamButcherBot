@@ -131,7 +131,7 @@ home_keyboard_pm = InlineKeyboardMarkup(
 home_text_pm = (
     f"Hey there! My name is {BOT_NAME}. I can manage your "
     + "group with lots of useful features, feel free to "
-    + "add me to your group" [Onichan](https://telegra.ph/file/7ba6536e75495cdc6ceb1.jpg))
+    + "add me to your group.")
 
 
 )
