@@ -374,8 +374,6 @@ if __name__ == "__main__":
             pass
         loop.run_until_complete(asyncio.sleep(3.0))  # task cancel wait
     finally:
-      patch-6
-        telethn.start(bot_token=TOKEN)
 
         telethn.start(bot_token=BOT_TOKEN)
 
