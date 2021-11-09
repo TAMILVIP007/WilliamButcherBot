@@ -24,6 +24,7 @@ SOFTWARE.
 """
 import asyncio
 import time
+from telethon import TelegramClient
 from inspect import getfullargspec
 from os import path
 
@@ -118,7 +119,7 @@ USERBOT_DC_ID = y.dc_id
 
 if USERBOT_ID not in SUDOERS:
     SUDOERS.append(USERBOT_ID)
-
+telethn = TelegramClient("saitama", API_ID, API_HASH)
 telegraph = Telegraph()
 telegraph.create_account(short_name=BOT_USERNAME)
 
