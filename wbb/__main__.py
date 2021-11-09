@@ -30,7 +30,11 @@ from pyrogram import filters, idle
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from wbb import (BOT_NAME, BOT_USERNAME, LOG_GROUP_ID, USERBOT_NAME,
+patch-6
+                 aiohttpsession, app, telethn, TOKEN)
+
                  aiohttpsession, app, telethn, BOT_TOKEN)
+
 from wbb.modules import ALL_MODULES
 from wbb.modules.sudoers import bot_sys_stats
 from wbb.utils import paginate_modules
@@ -374,5 +378,9 @@ if __name__ == "__main__":
             pass
         loop.run_until_complete(asyncio.sleep(3.0))  # task cancel wait
     finally:
+      patch-6
+        telethn.start(bot_token=TOKEN)
+
         telethn.start(bot_token=BOT_TOKEN)
+
         loop.close()
