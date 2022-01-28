@@ -87,5 +87,5 @@ async def get_spam_probability(user_id) -> list:
     if not data:
         return [0, 0]
     mean = lambda x: sum(x) / len(x)
-    spam = [i for i in data]
+    spam = list(data)
     return [mean(spam), len(spam)]

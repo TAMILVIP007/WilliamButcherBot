@@ -80,10 +80,7 @@ async def get_note_names(chat_id: int) -> List[str]:
 async def get_note(chat_id: int, name: str) -> Union[bool, dict]:
     name = name.lower().strip()
     _notes = await _get_notes(chat_id)
-    if name in _notes:
-        return _notes[name]
-    else:
-        return False
+    return _notes[name] if name in _notes else False
 
 
 async def save_note(chat_id: int, name: str, note: dict):
@@ -146,10 +143,7 @@ async def get_filters_names(chat_id: int) -> List[str]:
 async def get_filter(chat_id: int, name: str) -> Union[bool, dict]:
     name = name.lower().strip()
     _filters = await _get_filters(chat_id)
-    if name in _filters:
-        return _filters[name]
-    else:
-        return False
+    return _filters[name] if name in _filters else False
 
 
 async def save_filter(chat_id: int, name: str, _filter: dict):
@@ -181,12 +175,9 @@ async def delete_filter(chat_id: int, name: str) -> bool:
 
 
 async def int_to_alpha(user_id: int) -> str:
-    alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
-    text = ""
     user_id = str(user_id)
-    for i in user_id:
-        text += alphabet[int(i)]
-    return text
+    alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
+    return "".join(alphabet[int(i)] for i in user_id)
 
 
 async def alpha_to_int(user_id_alphabet: str) -> int:
@@ -277,9 +268,8 @@ async def user_global_karma(user_id) -> int:
         karma = await get_karma(
             chat["chat_id"], await int_to_alpha(user_id)
         )
-        if karma:
-            if int(karma["karma"]) > 0:
-                total_karma += int(karma["karma"])
+        if karma and int(karma["karma"]) > 0:
+            total_karma += int(karma["karma"])
     return total_karma
 
 
@@ -430,10 +420,7 @@ async def _get_lovers(chat_id: int):
 
 async def get_couple(chat_id: int, date: str):
     lovers = await _get_lovers(chat_id)
-    if date in lovers:
-        return lovers[date]
-    else:
-        return False
+    return lovers[date] if date in lovers else False
 
 
 async def save_couple(chat_id: int, date: str, couple: dict):

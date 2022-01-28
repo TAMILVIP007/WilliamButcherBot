@@ -158,7 +158,7 @@ async def purgeFunc(client, message: Message):
                 revoke=True,
             )
             message_ids = []
-    if len(message_ids) > 0:
+    if message_ids:
         await client.delete_messages(
             chat_id=chat_id, message_ids=message_ids, revoke=True
         )
@@ -409,11 +409,11 @@ async def unmute(_, message: Message):
 async def ban_deleted_accounts(_, message: Message):
     chat_id = message.chat.id
     deleted_users = []
-    banned_users = 0
     async for i in app.iter_chat_members(chat_id):
         if i.user.is_deleted:
             deleted_users.append(i.user.id)
-    if len(deleted_users) > 0:
+    if deleted_users:
+        banned_users = 0
         for deleted_user in deleted_users:
             try:
                 await message.chat.kick_member(deleted_user)
@@ -458,10 +458,7 @@ async def warn_user(_, message: Message):
     )
     mention = user.mention
     keyboard = ikb([[("🚨  Remove Warn  🚨", f"unwarn_{user_id}")]])
-    if warns:
-        warns = warns["warns"]
-    else:
-        warns = 0
+    warns = warns["warns"] if warns else 0
     if warns >= 2:
         _, __, alpha = await asyncio.gather(
             message.chat.kick_member(user_id),

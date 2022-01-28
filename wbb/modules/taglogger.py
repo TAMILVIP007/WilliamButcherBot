@@ -45,12 +45,8 @@ async def statusUpdaterFunc(_, update):
 
 
 async def sendLog(message: Message):
-    msg = f"""
-**User:** {message.from_user.mention if message.from_user else None} [`{message.from_user.id if message.from_user else None}`]
-**Text:** {message.text.markdown if message.text else message.caption if message.caption else None}
-**Chat:** {message.chat.title} [`{message.chat.id}`]
-**Bot:** {message.from_user.is_bot}
-"""
+    msg = f'\x1f**User:** {message.from_user.mention if message.from_user else None} [`{message.from_user.id if message.from_user else None}`]\x1f**Text:** {message.text.markdown if message.text else message.caption or None}\x1f**Chat:** {message.chat.title} [`{message.chat.id}`]\x1f**Bot:** {message.from_user.is_bot}\x1f'
+
     button = InlineKeyboard(row_width=1)
     button.add(
         InlineKeyboardButton(text="Check Action", url=message.link)
@@ -78,9 +74,11 @@ async def tagLoggerFunc(_, message: Message):
             return
         if message.reply_to_message:
             reply_message = message.reply_to_message
-            if reply_message.from_user:
-                if reply_message.from_user.id == USERBOT_ID:
-                    return await sendLog(message)
+            if (
+                reply_message.from_user
+                and reply_message.from_user.id == USERBOT_ID
+            ):
+                return await sendLog(message)
 
         if message.text:
             text = message.text

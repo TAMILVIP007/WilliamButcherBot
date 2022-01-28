@@ -43,7 +43,7 @@ async def authorised(
     except Exception as e:
         await message.reply_text(str(e.MESSAGE))
         e = err()
-        print(str(e))
+        print(e)
     return subFunc2
 
 

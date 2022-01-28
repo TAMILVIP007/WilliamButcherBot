@@ -153,9 +153,7 @@ async def random(_, message):
     try:
         if 1 < int(length) < 1000:
             alphabet = string.ascii_letters + string.digits
-            password = "".join(
-                secrets.choice(alphabet) for i in range(int(length))
-            )
+            password = "".join(secrets.choice(alphabet) for _ in range(int(length)))
             await message.reply_text(f"`{password}`")
         else:
             await message.reply_text(
@@ -237,7 +235,7 @@ async def cheat(_, message):
         await m.edit(f"`{data}`")
     except Exception as e:
         await m.edit(str(e))
-        print(str(e))
+        print(e)
 
 
 # Translate

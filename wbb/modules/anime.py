@@ -21,7 +21,7 @@ __HELP__ = """
 def shorten(description, info="anilist.co"):
     ms_g = ""
     if len(description) > 700:
-        description = description[0:500] + "...."
+        description = description[:500] + "...."
         ms_g += (
             f"\n**Description**: __{description}__[More here]({info})"
         )
@@ -208,14 +208,11 @@ async def anime_search(_, message):
         return
     search = message.text.split(None, 1)[1]
     variables = {"search": search}
-    json = (
-        requests.post(
-            url, json={"query": anime_query, "variables": variables}
-        )
+    if json := (
+        requests.post(url, json={"query": anime_query, "variables": variables})
         .json()["data"]
         .get("Media", None)
-    )
-    if json:
+    ):
         msg = f"**{json['title']['romaji']}**(`{json['title']['native']}`)\n**Type**: {json['format']}\n**Status**: {json['status']}\n**Episodes**: {json.get('episodes', 'N/A')}\n**Duration**: {json.get('duration', 'N/A')} Per Ep.\n**Score**: {json['averageScore']}\n**Genres**: `"
         for x in json["genres"]:
             msg += f"{x}, "
@@ -324,21 +321,19 @@ async def character_search(_, message):
         return
     search = message.text.split(None, 1)[1]
     variables = {"query": search}
-    json = (
+    if json := (
         requests.post(
             url,
             json={"query": character_query, "variables": variables},
         )
         .json()["data"]
         .get("Character", None)
-    )
-    if json:
+    ):
         ms_g = f"**{json.get('name').get('full')}**(`{json.get('name').get('native')}`)\n"
         description = f"{json['description']}"
         site_url = json.get("siteUrl")
         ms_g += shorten(description, site_url)
-        image = json.get("image", None)
-        if image:
+        if image := json.get("image", None):
             image = image.get("large")
             await message.reply_photo(image, caption=ms_g)
         else:

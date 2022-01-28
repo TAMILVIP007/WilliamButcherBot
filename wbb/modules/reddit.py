@@ -41,12 +41,11 @@ async def reddit(_, message):
     if not reddit.ok:
         return await m.edit(reddit.result)
     reddit = reddit.result
-    nsfw = reddit.nsfw
     sreddit = reddit.subreddit
     title = reddit.title
     image = reddit.url
     link = reddit.postLink
-    if nsfw:
+    if nsfw := reddit.nsfw:
         return await m.edit("NSFW RESULTS COULD NOT BE SHOWN.")
     caption = f"""
 **Title:** `{title}`

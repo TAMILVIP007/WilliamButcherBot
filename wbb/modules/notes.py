@@ -103,13 +103,12 @@ async def get_one_note(_, message):
         _note = await get_note(message.chat.id, name)
         if not _note:
             await message.reply_text("**No such note.**")
+        elif _note["type"] == "text":
+            await message.reply_text(
+                _note["data"], disable_web_page_preview=True
+            )
         else:
-            if _note["type"] == "text":
-                await message.reply_text(
-                    _note["data"], disable_web_page_preview=True
-                )
-            else:
-                await message.reply_sticker(_note["data"])
+            await message.reply_sticker(_note["data"])
 
 
 @app.on_message(

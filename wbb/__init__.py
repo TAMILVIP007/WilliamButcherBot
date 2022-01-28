@@ -22,6 +22,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+
 print("[INFO]: INITIALIZING")
 import asyncio
 import logging
@@ -49,9 +50,7 @@ console = logging.StreamHandler()
 logging.getLogger("").addHandler(console)
 log = logging.getLogger()
 
-is_config = path.exists("config.py")
-
-if is_config:
+if is_config := path.exists("config.py"):
     from config import *
 else:
     from sample_config import *
